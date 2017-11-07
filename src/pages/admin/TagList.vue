@@ -10,9 +10,15 @@
     <Page :total="100"></Page>
 
     <Modal v-model="add_modal" title="添加标签" @on-ok="add_ok">
-      <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="100">
+      <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="80">
         <FormItem label="名称：" prop="name">
           <Input v-model="formData.name" placeholder="输入标签名称"></Input>
+        </FormItem>
+        <FormItem label="状态：" prop="status">
+          <Select v-model="formData.status" placeholder="请选择...">
+            <Option value="1">正常</Option>
+            <Option value="0">禁用</Option>
+          </Select>
         </FormItem>
       </Form>
     </Modal>
@@ -24,13 +30,14 @@
     name: 'page-tag-list',
     data() {
       return {
-        add_modal: false,
+        add_modal: true,
         activeRow: {},
         formData: {
           name: '',
+          status: '1',
         },
         ruleValidate: {
-          title: [
+          name: [
             { required: true, message: '标签名称不能为空', trigger: 'blur' },
           ],
         },
