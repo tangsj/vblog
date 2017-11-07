@@ -5,6 +5,11 @@ import About from '@/pages/About';
 import ArticleList from '@/pages/ArticleList';
 import ArticleInfo from '@/pages/ArticleInfo';
 
+import AdminLogin from '@/pages/admin/Login';
+import Admin from '@/pages/admin/Index';
+import PostList from '@/pages/admin/PostList';
+import TagList from '@/pages/admin/TagList';
+
 Vue.use(Router);
 
 export default new Router({
@@ -33,6 +38,26 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About,
+    },
+    {
+      path: '/admin/login',
+      name: 'admin-login',
+      component: AdminLogin,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      children: [
+        {
+          path: 'post/list',
+          component: PostList,
+        },
+        {
+          path: 'tag/list',
+          component: TagList,
+        },
+      ],
     },
   ],
 });

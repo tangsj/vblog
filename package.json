@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "iview": "^2.6.0",
+    "marked": "^0.3.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

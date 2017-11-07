@@ -1,0 +1,20 @@
+.page-admin{
+  background-color: #FFF;
+}
+.page-admin-login{
+  width: 360px;
+  margin: 0 auto;
+}
+.admin-content{
+  padding: 20px;
+
+  .ivu-table-wrapper{
+    margin-bottom: 20px;
+  }
+  .ivu-page{
+    text-align: center;
+  }
+  .ivu-btn-group{
+    margin-bottom: 20px;
+  }
+}

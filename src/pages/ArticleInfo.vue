@@ -1,6 +1,6 @@
 <template>
   <div class="page-article-info">
-
+    article-info
   </div>
 </template>
 

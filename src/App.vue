@@ -6,6 +6,7 @@
         <nav>
           <router-link to="/" exact>主页</router-link>
           <router-link to="/about" exact>关于我</router-link>
+          <router-link to="/admin/login">管理</router-link>
         </nav>
         <div class="search-form">
           <input type="text" name="keys" placeholder="Search">
