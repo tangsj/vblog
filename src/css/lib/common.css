@@ -14,6 +14,14 @@
 
 p,ul{ padding: 0; margin: 0; }
 
+code, pre {
+  background-color: #f6f8f9;
+  border-radius: 10px;
+}
+pre{
+  padding: 10px;
+}
+
 html, body, #app-entry{ height: 100%; }
 body { background-color: #f5f8f9; font: 14px "Open Sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif; color: #565a5f; min-width: 1320px; -webkit-font-smoothing: antialiased; }
 a{ text-decoration: none; color: #565a5f; }
