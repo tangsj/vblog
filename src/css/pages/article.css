@@ -31,6 +31,7 @@
   .posts .header .meta a{color: #9a9ea3;}
   .posts .article-entry{ padding: 0 20px; line-height: 30px; padding-bottom: 20px; }
   .posts .article-entry p{ margin: 20px 0; }
+  .posts .article-entry a{ padding: 0 5px; text-decoration: underline;}
   .posts .footer{ margin: 0 20px; border-top: 1px solid #eceff2; padding: 20px 0;  }
   .posts .footer a{ float: right; color: #999; margin-left: 20px; font-size: 12px; }
   .posts .footer a:hover{ color: #38B7EA; }

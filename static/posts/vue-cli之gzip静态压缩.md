@@ -1,6 +1,6 @@
 在http里gzip压缩传输可以极大的优化资源下载速度（试验值：800k -> 200k);
 
-以前的做法一般都是在http服务器上面打开动态的gzip, 这样服务器会消耗CPU的资源来进行gzip压缩。
+以前的做法一般都是在http服务器上面打开动态的[gzip](http://www.tangsj.com/post/1), 这样服务器会消耗CPU的资源来进行gzip压缩。
 
 在vue-cli生成的项目配置文件里面`config/index.js`
 
