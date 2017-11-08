@@ -49,6 +49,6 @@ gulp.task('publish', ['clean'], () => gulp.src(path.join(__dirname, 'dist/**/*')
 
 gulp.task('clean', () => ssh.shell([
   `cd ${server.webRoot}/`,
-  'rm -rf *',
+  'sudo rm -rf *',
 ], { filePath: 'publish.log' })
   .pipe(gulp.dest('logs')));

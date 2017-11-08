@@ -180,7 +180,7 @@ export default {
                 figure: '',
                 date: '',
                 tags: [],
-              }
+              };
               this.loadPostsList();
             }
           } else {
