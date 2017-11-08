@@ -47,9 +47,9 @@ gulp.task('test', (e) => {
 gulp.task('publish', ['clean'], () => gulp.src(path.join(__dirname, 'dist/**/*'))
   .pipe(ssh.dest(server.webRoot)));
 
-gulp.task('pb-posts', () => gulp.src(path.join(__dirname, 'dist/static/posts/*'))
+gulp.task('pb-posts', () => gulp.src(path.join(__dirname, 'static/posts/*'))
   .pipe(ssh.dest(path.join(server.webRoot, 'static', 'posts'))));
-gulp.task('pp-json', ['pb-posts', 'posts'], () => gulp.src(path.join(__dirname, 'dist/static/posts.json'))
+gulp.task('pp-json', ['pb-posts', 'posts'], () => gulp.src(path.join(__dirname, 'static/posts.json'))
   .pipe(ssh.dest(path.join(server.webRoot, 'static'))));
 
 gulp.task('clean', () => ssh.shell([
