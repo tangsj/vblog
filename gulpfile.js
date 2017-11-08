@@ -44,7 +44,7 @@ gulp.task('test', (e) => {
     .pipe(gulp.dest('logs'));
 });
 
-gulp.task('publish', ['clean', 'posts'], () => gulp.src(path.join(__dirname, 'dist/**/*'))
+gulp.task('publish', ['clean'], () => gulp.src(path.join(__dirname, 'dist/**/*'))
   .pipe(ssh.dest(server.webRoot)));
 
 gulp.task('clean', () => ssh.shell([

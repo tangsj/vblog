@@ -173,6 +173,14 @@ export default {
             const res = await postsApi.update(postData);
             if (res) {
               this.add_modal = false;
+              this.formData = {
+                title: '',
+                author: 'tangsj',
+                source: '',
+                figure: '',
+                date: '',
+                tags: [],
+              }
               this.loadPostsList();
             }
           } else {

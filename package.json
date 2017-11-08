@@ -8,6 +8,7 @@
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "node build/build.js",
+    "bp": "gulp posts && node build/build.js && gulp publish",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {

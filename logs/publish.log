@@ -1,0 +1,42 @@
+Last login: Wed Nov  8 16:39:02 2017 from 183.67.60.240
+mount: /dev/vdb is already mounted or /data busy
+       /dev/vdb is already mounted on /data
+cd /data/tsj/blog/
+exit
+[?25l[?7l[0m[33m[1m                 .. 
+               .PLTJ. 
+              <><><><> 
+     [0m[32m[1mKKSSV' 4KKK [0m[33m[1mLJ[0m[35m[1m KKKL.'VSSKK 
+     [0m[32m[1mKKV' 4KKKKK [0m[33m[1mLJ[0m[35m[1m KKKKAL 'VKK 
+     [0m[32m[1mV' ' 'VKKKK [0m[33m[1mLJ[0m[35m[1m KKKKV' ' 'V 
+     [0m[32m[1m.4MA.' 'VKK [0m[33m[1mLJ[0m[35m[1m KKV' '.4Mb. 
+[0m[35m[1m   . [0m[32m[1mKKKKKA.' 'V [0m[33m[1mLJ[0m[35m[1m V' '.4KKKKK [0m[34m[1m. 
+[0m[35m[1m .4D [0m[32m[1mKKKKKKKA.'' [0m[33m[1mLJ[0m[35m[1m ''.4KKKKKKK [0m[34m[1mFA. 
+[0m[35m[1m<QDD ++++++++++++  [0m[34m[1m++++++++++++ GFD> 
+[0m[35m[1m 'VD [0m[34m[1mKKKKKKKK'.. [0m[32m[1mLJ [0m[33m[1m..'KKKKKKKK [0m[34m[1mFV 
+[0m[35m[1m   ' [0m[34m[1mVKKKKK'. .4 [0m[32m[1mLJ [0m[33m[1mK. .'KKKKKV [0m[34m[1m' 
+     [0m[34m[1m 'VK'. .4KK [0m[32m[1mLJ [0m[33m[1mKKA. .'KV' 
+     [0m[34m[1mA. . .4KKKK [0m[32m[1mLJ [0m[33m[1mKKKKA. . .4 
+     [0m[34m[1mKKA. 'KKKKK [0m[32m[1mLJ [0m[33m[1mKKKKK' .4KK 
+     [0m[34m[1mKKSSA. VKKK [0m[32m[1mLJ [0m[33m[1mKKKV .4SSKK 
+[0m[32m[1m              <><><><> 
+               'MKKM' 
+                 '' 
+[19A[9999999D[39C[0m[1m[33m[1mroot[0m@[33m[1mVM_177_211_centos[0m 
+[39C[0m----------------------[0m 
+[39C[0m[32m[1mOS[0m[0m:[0m CentOS Linux 7 (Core) x86_64[0m 
+[39C[0m[32m[1mModel[0m[0m:[0m Bochs[0m 
+[39C[0m[32m[1mKernel[0m[0m:[0m 3.10.0-514.6.2.el7.x86_64[0m 
+[39C[0m[32m[1mUptime[0m[0m:[0m 244 days, 5 hours, 36 minutes[0m 
+[39C[0m[32m[1mPackages[0m[0m:[0m 671[0m 
+[39C[0m[32m[1mShell[0m[0m:[0m zsh 5.0.2[0m 
+[39C[0m[32m[1mCPU[0m[0m:[0m Intel Xeon E5-26xx v3 (1) @ 2.294GHz[0m 
+[39C[0m[32m[1mGPU[0m[0m:[0m Cirrus Logic GD 5446[0m 
+[39C[0m[32m[1mMemory[0m[0m:[0m 630MiB / 992MiB[0m 
+
+[39C[0m[30m[40m   [0m[31m[41m   [0m[32m[42m   [0m[33m[43m   [0m[34m[44m   [0m[35m[45m   [0m[36m[46m   [0m[37m[47m   [0m
+
+
+[4B[?25h[?7h[1m[7m#[m[1m[0m                                                                                [0m[m[m[J[01;32m➜  [36m~[00m [K[?1h=ccd /data/tsj/blog/[?1l>
+[1m[7m#[m[1m[0m                                                                                [0m[m[m[J[01;32m➜  [36mblog[00m [K[?1h=eexit[?1l>
+[H[J

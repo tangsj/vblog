@@ -41,7 +41,7 @@ export default {
     return {
       loading: true,
       current: 1,
-      pageSize: 10,
+      pageSize: 5,
       postList: [],
     };
   },

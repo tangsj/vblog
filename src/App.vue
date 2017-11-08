@@ -7,9 +7,9 @@
           <router-link to="/" exact>主页</router-link>
           <router-link to="/about" exact>关于我</router-link>
         </nav>
-        <nav class="nav-admin">
+        <nav class="nav-admin" v-if="false">
           <router-link to="/admin/login">管理</router-link>
-          <!-- <a href="javascript:;" class="logout">退出</a> -->
+          <a href="javascript:;" class="logout">退出</a>
         </nav>
         <!-- <div class="search-form">
           <input type="text" name="keys" placeholder="Search">
