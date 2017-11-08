@@ -29,7 +29,7 @@ const Posts = {
         if (res) {
           await dispatch('loadTagsList');
           res.data.list.forEach((item) => {
-            const tags = item.tag;
+            const tags = item.tag.split(',').map(a => parseInt(a, 10));
             const tagsName = [];
             rootState.tags.list.forEach((t) => {
               if (tags.indexOf(t.id) !== -1) {

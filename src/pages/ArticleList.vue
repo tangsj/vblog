@@ -4,7 +4,7 @@
       <Spin size="large"></Spin>
     </div>
 
-    <article class="posts" v-for="(post, index) in postList">
+    <article class="posts" :key="`posts_${post.id}`" v-for="(post, index) in postList">
       <img v-if="post.figure" :src="`/static/uploads/${post.figure}`" alt="">
 
       <div class="header">

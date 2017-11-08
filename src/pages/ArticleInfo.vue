@@ -55,8 +55,9 @@ export default {
     tagsName() {
       if (this.post.tag) {
         const tagsName = [];
+        const ptags = this.post.tag.split(',').map(a => parseInt(a, 10));
         this.tags.forEach((item) => {
-          if (this.post.tag.indexOf(item.id) !== -1) {
+          if (ptags.indexOf(item.id) !== -1) {
             tagsName.push(item.name);
           }
         });

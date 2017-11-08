@@ -84,7 +84,7 @@ export default {
           title: '标签',
           key: 'tag',
           render: (h, params) => {
-            const tags = params.row.tag;
+            const tags = params.row.tag.split(',').map(a => parseInt(a, 10));
             const tagsName = [];
             this.tagArr.forEach((item) => {
               if (tags.indexOf(item.id) !== -1) {
