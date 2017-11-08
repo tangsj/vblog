@@ -2,40 +2,33 @@
   <div class="admin-content page-post-list">
     <ButtonGroup>
       <Button type="primary" @click="add_post">添加</Button>
-      <Button type="error">下架</Button>
     </ButtonGroup>
 
-    <Table border :columns="columns" :data="data"></Table>
+    <Table @on-selection-change="selectionChange" :loading="dataLoading" border :columns="columns" :data="data"></Table>
 
-    <Page :total="100"></Page>
+    <Page :current="current" :total="total" :page-size="pageSize" @on-change="pageChange"></Page>
 
-    <Modal v-model="add_modal" title="添加文章" @on-ok="add_ok">
+    <Modal :loading="modal_loading" v-model="add_modal" :title="activeRow.id ? '编辑文章': '添加文章'" @on-ok="add_ok">
       <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="100">
+        <FormItem label="关联文件：" prop="source">
+          <AutoComplete v-model="formData.source" :data="sourceArr" :filter-method="filterMethod" placeholder="请选择..."></AutoComplete>
+        </FormItem>
         <FormItem label="标题：" prop="title">
           <Input v-model="formData.title" placeholder="输入文章标题"></Input>
         </FormItem>
         <FormItem label="创建人" prop="author">
           <Input v-model="formData.author" placeholder="输入创建人姓名"></Input>
         </FormItem>
-        <FormItem label="关联文件：" prop="source">
-          <Select v-model="formData.source" placeholder="请选择...">
-            <Option value="beijing">New York</Option>
-            <Option value="shanghai">London</Option>
-            <Option value="shenzhen">Sydney</Option>
-          </Select>
-        </FormItem>
         <FormItem label="标签：" prop="tags">
           <Select multiple v-model="formData.tags" placeholder="请选择...">
-            <Option value="beijing">New York</Option>
-            <Option value="shanghai">London</Option>
-            <Option value="shenzhen">Sydney</Option>
+            <Option v-if="tag.status === 1" :key="`tag_${tag.id}`" :value="tag.id" v-for="tag in tagArr">{{tag.name}}</Option>
           </Select>
         </FormItem>
         <FormItem label="头图名称：" prop="figure">
           <Input v-model="formData.figure" placeholder="输入头图文件名"></Input>
         </FormItem>
         <FormItem label="创建日期：">
-          <DatePicker type="date" placeholder="请选择" v-model="formData.date"></DatePicker>
+          <DatePicker type="datetime" placeholder="请选择" v-model="formData.date" style="width: 215px;"></DatePicker>
         </FormItem>
       </Form>
     </Modal>
@@ -43,12 +36,24 @@
 </template>
 
 <script>
+import moment from 'moment';
+import postsApi from '@/api/posts';
+import tagsApi from '@/api/tags';
+
 export default {
   name: 'page-post-list',
   data() {
     return {
+      current: 1,
+      total: 0,
+      pageSize: 10,
+      dataLoading: false,
       add_modal: false,
+      modal_loading: true,
       activeRow: {},
+      tableSelection: [],
+      sourceArr: [],
+      tagArr: [],
       formData: {
         title: '',
         author: 'tangsj',
@@ -66,30 +71,45 @@ export default {
         ],
       },
       columns: [
-        {
-          type: 'selection',
-          width: 50,
-          align: 'center',
-        },
+        // {
+        //   type: 'selection',
+        //   width: 50,
+        //   align: 'center',
+        // },
         {
           title: '标题',
-          key: 'name',
+          key: 'title',
+        },
+        {
+          title: '标签',
+          key: 'tag',
+          render: (h, params) => {
+            const tags = params.row.tag;
+            const tagsName = [];
+            this.tagArr.forEach((item) => {
+              if (tags.indexOf(item.id) !== -1) {
+                tagsName.push(item.name);
+              }
+            });
+
+            return tagsName.join(',');
+          },
         },
         {
           title: '创建人',
-          key: 'name',
+          key: 'author',
         },
         {
           title: '文件名',
-          key: 'name',
+          key: 'source',
         },
         {
           title: '头图',
-          key: 'name',
+          key: 'figure',
         },
         {
           title: '创建日期',
-          key: 'name',
+          render: (h, params) => moment(params.row.date).format('YYYY-MM-DD HH:mm:ss'),
         },
         {
           title: '操作',
@@ -105,18 +125,29 @@ export default {
               on: {
                 click: () => {
                   this.activeRow = params.row;
+                  let tagArr = params.row.tag.split(',');
+                  tagArr = tagArr.map(t => parseInt(t, 10));
+                  this.formData.title = params.row.title;
+                  this.formData.author = params.row.author;
+                  this.formData.source = params.row.source;
+                  this.formData.figure = params.row.figure;
+                  this.formData.date = params.row.date;
+                  this.formData.tags = tagArr;
+                  this.formData.status = `${params.row.status}`;
+                  this.add_modal = true;
                 },
               },
             }, '编辑'),
           ]),
         },
       ],
-      data: [
-        {
-          name: 'John Brown',
-        },
-      ],
+      data: [],
     };
+  },
+  computed: {
+    selecttionIds() {
+      return this.tableSelection.map(item => item.id);
+    },
   },
   methods: {
     add_post() {
@@ -124,11 +155,97 @@ export default {
       this.add_modal = true;
     },
     add_ok() {
+      this.$refs.formData.validate(async (valid) => {
+        if (valid) {
+          if (this.activeRow.id) {
+            const postData = Object.assign({
+              title: '',
+              author: 'tangsj',
+              source: '',
+              figure: '',
+              date: '',
+              tags: [],
+            }, this.formData);
+            postData.tags = postData.tags.join(',');
 
+            postData.id = this.activeRow.id;
+
+            const res = await postsApi.update(postData);
+            if (res) {
+              this.add_modal = false;
+              this.loadPostsList();
+            }
+          } else {
+            const postData = Object.assign({
+              title: '',
+              author: 'tangsj',
+              source: '',
+              figure: '',
+              date: '',
+              tags: [],
+            }, this.formData);
+            postData.tags = postData.tags.join(',');
+
+            const res = await postsApi.add(postData);
+            if (res) {
+              this.add_modal = false;
+              this.current = 1;
+              this.loadPostsList();
+            }
+          }
+        } else {
+          this.modal_loading = false;
+          this.$Message.error('信息填写不完整!');
+          this.$nextTick(() => {
+            this.modal_loading = true;
+          });
+        }
+      });
+    },
+    selectionChange(selection) {
+      this.tableSelection = selection;
+    },
+    pageChange(p) {
+      this.current = p;
+      this.loadPostsList();
+    },
+    filterMethod(value, option) {
+      return option.toUpperCase().indexOf(value.toUpperCase()) !== -1;
+    },
+    async loadFileList() {
+      const res = await postsApi.fileList();
+      if (res) {
+        this.sourceArr = res.data;
+      }
+    },
+    loadTagsList() {
+      return new Promise(async (reslove, reject) => {
+        const res = await tagsApi.list({ page: -1 });
+        if (res) {
+          this.tagArr = res.data;
+          reslove();
+        }
+      });
+    },
+    async loadPostsList() {
+      this.dataLoading = true;
+      const res = await postsApi.list({
+        page: this.current - 1,
+        pageSize: this.pageSize,
+      });
+
+      if (res) {
+        this.dataLoading = false;
+        this.data = res.data.list;
+        this.total = res.data.total;
+      }
     },
   },
   beforeMount() {
-
+    this.loadFileList();
+    this.loadTagsList().then(() => {
+      this.loadPostsList();
+    });
   },
 };
 </script>

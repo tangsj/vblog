@@ -26,6 +26,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+    // 解决 moment 打包过大问题
+    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|zh-cn)$/),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

@@ -14,11 +14,11 @@
 
         <div class="article-info">
           <div class="col">
-            10
+            {{postTotal}}
             <p>POSTS</p>
           </div>
           <div class="col">
-            0
+            {{tags.length}}
             <p>TAGS</p>
           </div>
         </div>
@@ -44,22 +44,10 @@
         <div class="widget-title">Tags</div>
         <div class="widget">
           <ul class="tag-list">
-            <li>
+            <li v-for="tag in tags" :key="`tag_${tag.id}`">
               <a href="javascript:;">
-                <i class="icon-caret-right"></i>Javascript
-                <span>(10)</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <i class="icon-caret-right"></i>Css
-                <span>(10)</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <i class="icon-caret-right"></i>Html
-                <span>(10)</span>
+                <i class="icon-caret-right"></i>{{tag.name}}
+                <span></span>
               </a>
             </li>
           </ul>
@@ -70,11 +58,32 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'page-index',
   data() {
     return {
     };
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tags.list,
+      postTotal: state => state.posts.total,
+    }),
+  },
+  methods: {
+    ...mapActions([
+      'loadTagsList',
+    ]),
+    receiveData(data) {
+      this.postTotal = data.postTotal;
+    },
+  },
+  beforeMount() {
+    this.loadTagsList({ page: -1 });
+  },
+  mounted() {
   },
 };
 </script>

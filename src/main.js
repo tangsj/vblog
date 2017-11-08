@@ -2,11 +2,14 @@ import Vue from 'vue';
 import axios from 'axios';
 import qs from 'qs';
 import iView from 'iview';
+import VueBus from 'vue-bus';
 import 'iview/dist/styles/iview.css';
 import App from './App';
 import router from './router';
+import store from './store';
 
 Vue.use(iView);
+Vue.use(VueBus);
 
 Vue.config.productionTip = false;
 
@@ -28,6 +31,13 @@ axios.interceptors.request.use((config) => {
 // response interceptor
 axios.interceptors.response.use((response) => {
   if (response.status === 200) {
+    // 直接请求md文件不过滤状态
+    const url = response.config.url.split('?')[0];
+
+    if (/\.md$/.test(url)) {
+      return response.data;
+    }
+
     if (response.data.code !== 0) { // 接口返回失败状态
       iView.Notice.error({
         title: '错误',
@@ -51,6 +61,7 @@ axios.interceptors.response.use((response) => {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App },
 });

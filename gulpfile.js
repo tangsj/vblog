@@ -25,14 +25,26 @@ const ssh = new SSH({
   sshConfig: server,
 });
 
+gulp.task('posts', () => {
+  const basePath = path.join(__dirname, 'static', 'posts');
+  const paths = fs.readdirSync(basePath);
+  const fileData = {
+    code: 0,
+    message: '获取文件列表成功！',
+    data: paths,
+  };
+  fs.writeFile(path.join(basePath, '..', 'posts.json'), JSON.stringify(fileData, null, 2), () => {
+    console.log('posts.json create success.');
+  });
+});
+
 gulp.task('test', (e) => {
   console.log(`server Root ${server.webRoot}`);
   return ssh.exec(['pwd'], { filePath: 'log.log' })
     .pipe(gulp.dest('logs'));
 });
 
-/* 代码发布 采用直接上传打包后代码的方式 */
-gulp.task('publish', ['clean'], () => gulp.src(path.join(__dirname, 'dist/**/*'))
+gulp.task('publish', ['clean', 'posts'], () => gulp.src(path.join(__dirname, 'dist/**/*'))
   .pipe(ssh.dest(server.webRoot)));
 
 gulp.task('clean', () => ssh.shell([
