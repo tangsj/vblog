@@ -27,7 +27,6 @@ const Posts = {
 
         const res = await postsApi.list(query);
         if (res) {
-          await dispatch('loadTagsList');
           res.data.list.forEach((item) => {
             const tags = item.tag.split(',').map(a => parseInt(a, 10));
             const tagsName = [];

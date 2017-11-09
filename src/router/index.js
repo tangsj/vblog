@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import About from '@/pages/About';
 import ArticleList from '@/pages/ArticleList';
 import ArticleInfo from '@/pages/ArticleInfo';
+import NoMatched from '@/pages/NoMatched';
 
 import AdminLogin from '@/pages/admin/Login';
 import Admin from '@/pages/admin/Index';
@@ -57,6 +58,10 @@ export default new Router({
           component: TagList,
         },
       ],
+    },
+    {
+      path: '*',
+      component: NoMatched,
     },
   ],
 });
