@@ -8,9 +8,9 @@
           <router-link to="/demo" exact>示例</router-link>
           <router-link to="/about" exact>关于我</router-link>
         </nav>
-        <nav class="nav-admin" v-if="false">
-          <router-link to="/admin/login">管理</router-link>
-          <a href="javascript:;" class="logout">退出</a>
+        <nav class="nav-admin">
+          <router-link :to="murl">管理</router-link>
+          <a v-if="isLogin" href="javascript:;" class="logout" @click="logout">退出</a>
         </nav>
         <!-- <div class="search-form">
           <input type="text" name="keys" placeholder="Search">
@@ -31,8 +31,36 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+import systemApi from '@/api/system';
+
 export default {
   name: 'app',
+  data() {
+    return {
+    };
+  },
+  computed: {
+    ...mapState([
+      'isLogin',
+    ]),
+    murl() {
+      return this.isLogin ? '/admin/post/list' : '/admin/login';
+    },
+  },
+  methods: {
+    ...mapMutations([
+      'setLogin',
+    ]),
+    async logout() {
+      const res = await systemApi.doLogout();
+      if (res) {
+        this.setLogin(false);
+        sessionStorage.removeItem('isLogin');
+        this.$router.push('/admin/login');
+      }
+    },
+  },
   mounted() {
     const isWebkit = navigator.userAgent.indexOf('AppleWebKit') > -1;
 

@@ -16,7 +16,7 @@
         <FormItem label="标题：" prop="title">
           <Input v-model="formData.title" placeholder="输入文章标题"></Input>
         </FormItem>
-        <FormItem label="创建人" prop="author">
+        <FormItem label="作者：" prop="author">
           <Input v-model="formData.author" placeholder="输入创建人姓名"></Input>
         </FormItem>
         <FormItem label="标签：" prop="tags">
@@ -96,7 +96,7 @@ export default {
           },
         },
         {
-          title: '创建人',
+          title: '作者',
           key: 'author',
         },
         {
@@ -182,6 +182,11 @@ export default {
                 tags: [],
               };
               this.loadPostsList();
+            } else {
+              this.modal_loading = false;
+              this.$nextTick(() => {
+                this.modal_loading = true;
+              });
             }
           } else {
             const postData = Object.assign({
@@ -199,6 +204,11 @@ export default {
               this.add_modal = false;
               this.current = 1;
               this.loadPostsList();
+            } else {
+              this.modal_loading = false;
+              this.$nextTick(() => {
+                this.modal_loading = true;
+              });
             }
           }
         } else {

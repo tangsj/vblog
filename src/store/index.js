@@ -10,8 +10,12 @@ const pro = process.env.NODE_ENV === 'production';
 const store = new Vuex.Store({
   state: {
     appName: 'CodeCook',
+    isLogin: !!sessionStorage.isLogin,
   },
   mutations: {
+    setLogin(state, status) {
+      state.isLogin = status;
+    },
   },
   actions: {
   },

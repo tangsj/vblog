@@ -35,6 +35,10 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+import md5 from 'md5';
+import systemApi from '@/api/system';
+
 export default {
   name: 'page-admin-login',
   data() {
@@ -56,11 +60,42 @@ export default {
     };
   },
   methods: {
+    ...mapMutations([
+      'setLogin',
+    ]),
     handleSubmit(name) {
-      this.$router.push('/admin/post/list');
+      this.$refs.formData.validate(async (valid) => {
+        if (valid) {
+          const res = await systemApi.doLogin({
+            username: this.formData.user,
+            password: md5(this.formData.password),
+          });
+
+          if (res) {
+            this.setLogin(true);
+            sessionStorage.setItem('isLogin', true);
+            // 记住用户名，密码
+            if (this.remember) {
+              localStorage.setItem('cc_remember', JSON.stringify(this.formData));
+            } else {
+              localStorage.removeItem('cc_remember');
+            }
+            this.$router.push(this.$route.query.redirect || '/admin/post/list');
+          }
+        }
+      });
     },
   },
   beforeMount() {
+  },
+  mounted() {
+    // 回填信息
+    if (localStorage.getItem('cc_remember')) {
+      this.remember = true;
+      const remember = JSON.parse(localStorage.getItem('cc_remember'));
+      this.formData.user = remember.user;
+      this.formData.password = remember.password;
+    }
   },
 };
 </script>

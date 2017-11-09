@@ -13,7 +13,7 @@ import TagList from '@/pages/admin/TagList';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -48,6 +48,7 @@ export default new Router({
       path: '/admin',
       redirect: '/admin/post/list',
       component: Admin,
+      meta: { requiresAuth: true },
       children: [
         {
           path: 'post/list',
@@ -65,3 +66,22 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const isLogin = !!sessionStorage.isLogin;
+    if (!isLogin) {
+      next({
+        path: '/admin/login',
+        query: { redirect: to.fullPath },
+      });
+    } else {
+      next();
+    }
+    next();
+  } else {
+    next();
+  }
+});
+
+export default router;

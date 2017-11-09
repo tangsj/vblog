@@ -45,7 +45,7 @@
         <div class="widget">
           <Tag
             :color="['blue', 'green', 'red', 'yellow', 'default'][(Math.random() * 5) | 0]"
-            :type="['border', 'dot', ''][(Math.random() * 3) | 0]"
+            :type="['border', 'dot', null][(Math.random() * 3) | 0]"
             :key="`tag_${tag.id}`"
             v-for="tag in tags"
           >

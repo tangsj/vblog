@@ -113,6 +113,11 @@
               const res = await tagsApi.update(Object.assign(this.activeRow, this.formData));
               if (res) {
                 this.add_modal = false;
+              } else {
+                this.modal_loading = false;
+                this.$nextTick(() => {
+                  this.modal_loading = true;
+                });
               }
             } else {
               const res = await tagsApi.add(this.formData);
@@ -120,6 +125,11 @@
                 this.add_modal = false;
                 this.current = 1;
                 this.loadTagList();
+              } else {
+                this.modal_loading = false;
+                this.$nextTick(() => {
+                  this.modal_loading = true;
+                });
               }
             }
           } else {
