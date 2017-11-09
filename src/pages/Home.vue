@@ -43,14 +43,14 @@
       <div class="widget-wrap">
         <div class="widget-title">Tags</div>
         <div class="widget">
-          <ul class="tag-list">
-            <li v-for="tag in tags" :key="`tag_${tag.id}`">
-              <a href="javascript:;">
-                <i class="icon-caret-right"></i>{{tag.name}}
-                <span></span>
-              </a>
-            </li>
-          </ul>
+          <Tag
+            :color="['blue', 'green', 'red', 'yellow', 'default'][(Math.random() * 5) | 0]"
+            :type="['border', 'dot', ''][(Math.random() * 3) | 0]"
+            :key="`tag_${tag.id}`"
+            v-for="tag in tags"
+          >
+            {{tag.name}}
+          </Tag>
         </div>
       </div>
     </aside>
