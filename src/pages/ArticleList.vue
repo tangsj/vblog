@@ -23,7 +23,7 @@
           </span>
           <span class="author">
             <Icon type="person"></Icon>
-            <a href="javascript:;" class="category-link">{{post.author}}</a>
+            <a href="javascript:;">{{post.author}}</a>
           </span>
         </div>
       </div>
