@@ -59,6 +59,11 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapState([
+      'isLogin',
+    ]),
+  },
   methods: {
     ...mapMutations([
       'setLogin',
@@ -89,6 +94,10 @@ export default {
   beforeMount() {
   },
   mounted() {
+    if (this.isLogin) {
+      this.$router.push('/admin/post/list');
+      return;
+    }
     // 回填信息
     if (localStorage.getItem('cc_remember')) {
       this.remember = true;
