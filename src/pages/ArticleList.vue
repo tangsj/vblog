@@ -21,6 +21,10 @@
             <i class="icon-folder-close"></i>
             <a href="javascript:;" class="category-link">{{post.tagsName}}</a>
           </span>
+          <span class="author">
+            <Icon type="person"></Icon>
+            <a href="javascript:;" class="category-link">{{post.author}}</a>
+          </span>
         </div>
       </div>
     </article>
