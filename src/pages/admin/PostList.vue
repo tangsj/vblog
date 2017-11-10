@@ -38,7 +38,7 @@
           <Input v-model="formData.figure" placeholder="输入头图文件名"></Input>
         </FormItem>
         <FormItem label="创建日期：">
-          <DatePicker type="datetime" placeholder="请选择" v-model="formData.date" style="width: 215px;"></DatePicker>
+          <DatePicker type="datetime" placement="top" placeholder="请选择" v-model="formData.date" style="width: 215px;"></DatePicker>
         </FormItem>
       </Form>
     </Modal>
@@ -70,7 +70,7 @@ export default {
         author: 'tangsj',
         source: '',
         figure: '',
-        date: '',
+        date: new Date(),
         tags: [],
       },
       ruleValidate: {
@@ -142,7 +142,7 @@ export default {
                   this.formData.author = params.row.author;
                   this.formData.source = params.row.source;
                   this.formData.figure = params.row.figure;
-                  this.formData.date = params.row.date;
+                  this.formData.date = new Date(params.row.date);
                   this.formData.tags = tagArr;
                   this.formData.status = `${params.row.status}`;
                   this.add_modal = true;
@@ -163,6 +163,8 @@ export default {
   methods: {
     add_post() {
       this.activeRow = {};
+      this.$refs.formData.resetFields();
+      this.formData.date = new Date();
       this.add_modal = true;
     },
     add_ok() {
