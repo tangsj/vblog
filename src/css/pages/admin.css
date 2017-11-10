@@ -18,3 +18,11 @@
     margin-bottom: 20px;
   }
 }
+.post-add-file-input .ivu-form-item-content{
+  padding-right: 80px;
+}
+.post-upload-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+}

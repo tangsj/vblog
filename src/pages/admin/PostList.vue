@@ -10,8 +10,18 @@
 
     <Modal :loading="modal_loading" v-model="add_modal" :title="activeRow.id ? '编辑文章': '添加文章'" @on-ok="add_ok">
       <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="100">
-        <FormItem label="关联文件：" prop="source">
+        <FormItem label="关联文件：" prop="source" class="post-add-file-input">
           <AutoComplete v-model="formData.source" :data="sourceArr" :filter-method="filterMethod" placeholder="请选择..."></AutoComplete>
+          <Upload
+            name="mdfile"
+            class="post-upload-btn"
+            action="/blog/posts/upload"
+            :show-upload-list="false"
+            :before-upload="beforeUpload"
+            :on-success="uploadSuccess"
+          >
+            <Button :loading="uploading" type="info" icon="ios-cloud-upload-outline">上传</Button>
+          </Upload>
         </FormItem>
         <FormItem label="标题：" prop="title">
           <Input v-model="formData.title" placeholder="输入文章标题"></Input>
@@ -44,11 +54,12 @@ export default {
   name: 'page-post-list',
   data() {
     return {
+      uploading: false,
       current: 1,
       total: 0,
       pageSize: 10,
       dataLoading: false,
-      add_modal: false,
+      add_modal: true,
       modal_loading: true,
       activeRow: {},
       tableSelection: [],
@@ -219,6 +230,21 @@ export default {
           });
         }
       });
+    },
+    beforeUpload() {
+      this.uploading = true;
+    },
+    uploadSuccess(response) {
+      this.uploading = false;
+      if (response.code !== 0) {
+        this.$Notice.error({
+          title: '错误',
+          desc: response.message,
+        });
+      } else {
+        this.formData.source = response.data.originalname;
+        this.sourceArr.unshift(response.data.originalname);
+      }
     },
     selectionChange(selection) {
       this.tableSelection = selection;
