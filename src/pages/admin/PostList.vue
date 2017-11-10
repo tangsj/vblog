@@ -59,7 +59,7 @@ export default {
       total: 0,
       pageSize: 10,
       dataLoading: false,
-      add_modal: true,
+      add_modal: false,
       modal_loading: true,
       activeRow: {},
       tableSelection: [],
