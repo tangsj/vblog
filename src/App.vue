@@ -27,6 +27,8 @@
         <p>Chrome <a href="javascript:;">渝ICP备14005794号-1</a></p>
       </div>
     </footer>
+
+    <BackTop></BackTop>
   </div>
 </template>
 

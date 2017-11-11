@@ -16,7 +16,7 @@
     display: inline-block;
   }
   .posts {
-    width: 690px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
     background-color: #FFF;
@@ -41,3 +41,10 @@
   .comment-box .submit { color: #FFF; width: 100px; height: 30px; display: inline-block; font-size: 14px; line-height: 30px; text-align: center; background: #38b7ea; border-radius: 10px; font-weight: bold; }
   .comment-box textarea{ width: 100%; resize: none; border: 1px solid #eceff2; outline: none; }
 }
+
+@media screen and (max-width: 750px) {
+  .page-article-info .posts .header .meta{
+    font-size: 12px;
+  }
+}
+

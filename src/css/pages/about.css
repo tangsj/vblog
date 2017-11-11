@@ -240,3 +240,113 @@
     }
   }
 }
+
+
+@media screen and (max-width: 1320px) {
+  .page-about{
+    padding: 0;
+  }
+  .page-about .project .items .item{
+    margin-bottom: 20px;
+    height: auto;
+  }
+
+  .page-about .project .items .item .container{
+    width: 100%;
+    position: initial;
+    transform: translate(0,0);
+  }
+  .page-about .project .items .item:nth-child(odd) .container{
+    padding-right: 0;
+    margin-left: 0;
+  }
+  .page-about .project .items .item:nth-child(even) .container{
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .page-about .project .items .item:nth-child(even) .container:before,
+  .page-about .project .items .item:nth-child(even) .container:after,
+  .page-about .project .items .item:nth-child(odd) .container:after,
+  .page-about .project .items .item:nth-child(odd) .container:before{
+    display: none;
+  }
+
+  .page-about .project .items .item:nth-child(even) .container .time{
+    right: 0;
+    left: initial;
+  }
+
+  .page-about .project .items .item:nth-child(odd) .container .content{
+    border-right: none;
+  }
+  .page-about .project .items .item:nth-child(even) .container .content{
+    border-left: none;
+  }
+  .page-about .project .items .item .content{
+    padding-right: 120px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .page-about .info{
+    display: block;
+    height: auto;
+  }
+  .page-about .info>div{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .page-about .work{
+    /* display: none; */
+  }
+  .page-about .info .right{
+    text-align: center;
+  }
+  .page-about .info .right i{
+    display: none;
+  }
+  .page-about .project{
+    margin-top: 0;
+  }
+
+  .page-about .project h2{
+    position: initial;
+    margin-left: 10px;
+  }
+  .page-about .project .items{
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
+  .page-about .project:before{
+    display: none;
+  }
+  .page-about .work .items{
+    height: auto;
+    display: block;
+    margin-top: 30px;
+    padding-left: 40px;
+  }
+  .page-about .work .items .item {
+    margin-bottom: 20px;
+  }
+  .page-about .work .items .item .company{
+    position: initial;
+    font-size: 16px;
+  }
+  .page-about .work .items .item:before{
+    left: 0;
+    margin-top: 0;
+    margin-left: -40px;
+  }
+  .page-about .work .items .item .time{
+    position: initial;
+    text-align: left;
+  }
+  .page-about .work .items:after{
+    height: 80%;
+    width: 7px;
+    left: 11px;
+    transform: translate(0, -46%);
+  }
+
+}

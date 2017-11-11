@@ -88,6 +88,7 @@ export default {
       if (content) {
         this.content = content;
         this.loading = false;
+        window.scroll(0, 0);
       }
     }
     // 加载第1页文章，主要获取总条数

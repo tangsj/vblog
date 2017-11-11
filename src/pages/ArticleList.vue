@@ -73,6 +73,7 @@ export default {
       'loadPostList',
     ]),
     pageChange(p) {
+      window.scroll(0, 0);
       this.current = p;
       this.loadFun();
     },
