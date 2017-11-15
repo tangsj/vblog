@@ -39,6 +39,13 @@ module.exports = {
           '^/blog': '/blog',
         },
       },
+      '/file': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/file': '/file',
+        },
+      },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

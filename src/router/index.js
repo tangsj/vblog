@@ -10,6 +10,8 @@ import AdminLogin from '@/pages/admin/Login';
 import Admin from '@/pages/admin/Index';
 import PostList from '@/pages/admin/PostList';
 import TagList from '@/pages/admin/TagList';
+import BannerList from '@/pages/admin/BannerList';
+import UserList from '@/pages/admin/UserList';
 
 Vue.use(Router);
 
@@ -57,6 +59,14 @@ const router = new Router({
         {
           path: 'tag/list',
           component: TagList,
+        },
+        {
+          path: 'banner/list',
+          component: BannerList,
+        },
+        {
+          path: 'user/list',
+          component: UserList,
         },
       ],
     },

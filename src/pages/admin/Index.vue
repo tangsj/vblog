@@ -12,10 +12,14 @@
         <Icon type="settings"></Icon>
         标签管理
       </MenuItem>
-      <!-- <MenuItem name="user">
+      <MenuItem name="/admin/banner/list">
+        <Icon type="images"></Icon>
+        Banner图管理
+      </MenuItem>
+      <MenuItem name="/admin/user/list">
         <Icon type="ios-people"></Icon>
         用户管理
-      </MenuItem> -->
+      </MenuItem>
     </Menu>
     <router-view></router-view>
   </div>

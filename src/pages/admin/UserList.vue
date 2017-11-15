@@ -1,9 +1,9 @@
 <template>
-  <div class="admin-content page-tag-list">
-    <div class="btns" style="margin-bottom: 20px;">
+  <div class="admin-content page-user-list">
+    <ButtonGroup>
       <Button type="primary" @click="add_tag">添加</Button>
       <Button type="error" @click="remove_tag">删除</Button>
-    </div>
+    </ButtonGroup>
 
     <Table @on-selection-change="selectionChange" :loading="dataLoading" border :columns="columns" :data="data"></Table>
 
@@ -32,7 +32,7 @@
   import tagsApi from '@/api/tags';
 
   export default {
-    name: 'page-tag-list',
+    name: 'page-user-list',
     data() {
       return {
         current: 1,

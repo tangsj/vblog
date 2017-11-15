@@ -37,9 +37,6 @@
         <FormItem label="头图名称：" prop="figure">
           <Input v-model="formData.figure" placeholder="输入头图文件名"></Input>
         </FormItem>
-        <FormItem label="创建日期：">
-          <DatePicker type="datetime" placement="top" placeholder="请选择" v-model="formData.date" style="width: 215px;"></DatePicker>
-        </FormItem>
       </Form>
     </Modal>
   </div>
@@ -142,7 +139,6 @@ export default {
                   this.formData.author = params.row.author;
                   this.formData.source = params.row.source;
                   this.formData.figure = params.row.figure;
-                  this.formData.date = new Date(params.row.date);
                   this.formData.tags = tagArr;
                   this.formData.status = `${params.row.status}`;
                   this.add_modal = true;
@@ -176,7 +172,6 @@ export default {
               author: 'tangsj',
               source: '',
               figure: '',
-              date: '',
               tags: [],
             }, this.formData);
             postData.tags = postData.tags.join(',');
@@ -237,16 +232,19 @@ export default {
       this.uploading = true;
     },
     uploadSuccess(response) {
-      this.uploading = false;
-      if (response.code !== 0) {
-        this.$Notice.error({
-          title: '错误',
-          desc: response.message,
-        });
-      } else {
-        this.formData.source = response.data.originalname;
-        this.sourceArr.unshift(response.data.originalname);
-      }
+      console.log(response);
+      return false;
+
+      // this.uploading = false;
+      // if (response.code !== 0) {
+      //   this.$Notice.error({
+      //     title: '错误',
+      //     desc: response.message,
+      //   });
+      // } else {
+      //   this.formData.source = response.data.originalname;
+      //   this.sourceArr.unshift(response.data.originalname);
+      // }
     },
     selectionChange(selection) {
       this.tableSelection = selection;
