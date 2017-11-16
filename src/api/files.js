@@ -2,7 +2,7 @@
  * @Author: codecook
  * @Date: 2017-11-15 14:57:00
  * @Last Modified by: codecook
- * @Last Modified time: 2017-11-15 15:47:00
+ * @Last Modified time: 2017-11-16 09:46:55
  */
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ const Files = {
    */
   list(query) {
     const params = Object.assign({
-      page: 0,
+      page: -1,
       pageSize: 10,
       type: 'all',
     }, query);

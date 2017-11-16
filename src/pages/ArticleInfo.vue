@@ -5,7 +5,7 @@
     </div>
 
     <article class="posts" v-if="!loading">
-      <img v-if="post.figure" :src="`/static/uploads/${post.figure}`" alt="" />
+      <img v-if="post.figure" :src="`/static/${post.figure_path}`" alt="" />
       <div class="header">
         <h1>
           <a href="javascript:;">{{post.title}}</a>

@@ -1,6 +1,6 @@
 <template>
   <div class="admin-content page-banner-list">
-    <div class="btns" style="margin-bottom: 20px;">
+    <div class="btns" style="margin-bottom: 10px;">
       <Upload
         style="display: inline-block;"
         name="file"
@@ -14,6 +14,11 @@
       </Upload>
       <Button type="error" @click="remove_banner">删除</Button>
     </div>
+
+    <div class="tip" style="font-size: 12px;margin-bottom: 10px;">
+      banner上传图片建议尺寸：1024px * 438px
+    </div>
+
     <Table @on-selection-change="selectionChange" :loading="dataLoading" border :columns="columns" :data="data"></Table>
 
     <Page :current="current" :total="total" :page-size="pageSize" @on-change="pageChange"></Page>

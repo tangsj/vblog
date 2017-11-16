@@ -35,7 +35,12 @@
           </Select>
         </FormItem>
         <FormItem label="头图名称：" prop="figure">
-          <Input v-model="formData.figure" placeholder="输入头图文件名"></Input>
+          <Select v-model="formData.figure" placeholder="请选择...">
+            <Option :key="`banner_${banner.id}`" :value="banner.id" v-for="banner in bannerArr">{{banner.originalname}}</Option>
+          </Select>
+        </FormItem>
+        <FormItem label="头图预览：" prop="figure" v-if="figurePath">
+          <img :src="`/static/${figurePath}`" alt="" width="100%">
         </FormItem>
       </Form>
     </Modal>
@@ -46,6 +51,7 @@
 import moment from 'moment';
 import postsApi from '@/api/posts';
 import tagsApi from '@/api/tags';
+import filesApi from '@/api/files';
 
 export default {
   name: 'page-post-list',
@@ -61,6 +67,7 @@ export default {
       activeRow: {},
       tableSelection: [],
       sourceArr: [],
+      bannerArr: [],
       tagArr: [],
       formData: {
         title: '',
@@ -114,6 +121,13 @@ export default {
         {
           title: '头图',
           key: 'figure',
+          render: (h, params) => {
+            const banner = this.bannerArr.filter(item => item.id === params.row.figure)[0];
+            if (banner) {
+              return banner.originalname;
+            }
+            return '';
+          },
         },
         {
           title: '创建日期',
@@ -155,11 +169,22 @@ export default {
     selecttionIds() {
       return this.tableSelection.map(item => item.id);
     },
+    figurePath() {
+      if (this.formData.figure) {
+        const banner = this.bannerArr.filter(item => item.id === this.formData.figure)[0];
+
+        if (banner) {
+          return banner.path;
+        }
+      }
+      return '';
+    },
   },
   methods: {
     add_post() {
       this.activeRow = {};
       this.$refs.formData.resetFields();
+      this.formData.figure = '';
       this.formData.date = new Date();
       this.add_modal = true;
     },
@@ -175,6 +200,7 @@ export default {
               tags: [],
             }, this.formData);
             postData.tags = postData.tags.join(',');
+            postData.figure_path = this.figurePath;
 
             postData.id = this.activeRow.id;
 
@@ -189,6 +215,7 @@ export default {
                 date: '',
                 tags: [],
               };
+              this.activeRow = {};
               this.loadPostsList();
             } else {
               this.modal_loading = false;
@@ -206,6 +233,7 @@ export default {
               tags: [],
             }, this.formData);
             postData.tags = postData.tags.join(',');
+            postData.figure_path = this.figurePath;
 
             const res = await postsApi.add(postData);
             if (res) {
@@ -232,19 +260,16 @@ export default {
       this.uploading = true;
     },
     uploadSuccess(response) {
-      console.log(response);
-      return false;
-
-      // this.uploading = false;
-      // if (response.code !== 0) {
-      //   this.$Notice.error({
-      //     title: '错误',
-      //     desc: response.message,
-      //   });
-      // } else {
-      //   this.formData.source = response.data.originalname;
-      //   this.sourceArr.unshift(response.data.originalname);
-      // }
+      this.uploading = false;
+      if (response.code !== 0) {
+        this.$Notice.error({
+          title: '错误',
+          desc: response.message,
+        });
+      } else {
+        this.formData.source = response.data.originalname;
+        this.sourceArr.unshift(response.data.originalname);
+      }
     },
     selectionChange(selection) {
       this.tableSelection = selection;
@@ -262,6 +287,16 @@ export default {
         this.sourceArr = res.data;
       }
     },
+    loadBannerList() {
+      return new Promise(async (reslove, reject) => {
+        const res = await filesApi.list({ type: 'banner' });
+        if (res) {
+          this.bannerArr = res.data;
+          reslove();
+        }
+      });
+    },
+
     loadTagsList() {
       return new Promise(async (reslove, reject) => {
         const res = await tagsApi.list({ page: -1 });
@@ -287,7 +322,10 @@ export default {
   },
   beforeMount() {
     this.loadFileList();
-    this.loadTagsList().then(() => {
+    Promise.all([
+      this.loadBannerList(),
+      this.loadTagsList(),
+    ]).then(() => {
       this.loadPostsList();
     });
   },

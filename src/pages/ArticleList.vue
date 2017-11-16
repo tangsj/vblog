@@ -5,7 +5,7 @@
     </div>
 
     <article class="posts" :key="`posts_${post.id}`" v-for="(post, index) in postList">
-      <img v-if="post.figure" :src="`/static/uploads/${post.figure}`" alt="">
+      <img v-if="post.figure" :src="`/static/${post.figure_path}`" alt="">
 
       <div class="header">
         <h1>
