@@ -4,9 +4,9 @@
       <div class="wrapper">
         <a href="javascript:;" class="logo">CodeCook</a>
         <nav>
-          <router-link to="/" exact>主页</router-link>
-          <router-link to="/demo" exact>示例</router-link>
-          <router-link to="/about" exact>关于我</router-link>
+          <router-link to="/" exact>记录</router-link>
+          <!-- <router-link to="/demo" exact>示例</router-link> -->
+          <router-link to="/about" exact>经历</router-link>
         </nav>
         <nav class="nav-admin">
           <router-link :to="murl">管理</router-link>

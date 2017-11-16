@@ -1,41 +1,43 @@
 <template>
   <div class="wrapper page-index">
-    <aside class="profile">
-      <div class="inner">
-        <div class="base-info">
-          <img src="/static/uploads/avatar.jpg" class="avatar" alt="">
-          <h2 class="name">CodeCook</h2>
-          <h3 class="title">Web Developer</h3>
-          <div class="location">
-            <i class="icon-map-marker"></i>Chongqing, China
+    <Affix :offset-top="20">
+      <aside class="profile">
+        <div class="inner">
+          <div class="base-info">
+            <img src="/static/uploads/avatar.jpg" class="avatar" alt="">
+            <h2 class="name">CodeCook</h2>
+            <h3 class="title">Web Developer</h3>
+            <div class="location">
+              <i class="icon-map-marker"></i>Chongqing, China
+            </div>
+            <a href="http://github.com/tangsj" target="_blank" class="follow">FOLLOW</a>
           </div>
-          <a href="http://github.com/tangsj" target="_blank" class="follow">FOLLOW</a>
-        </div>
 
-        <div class="article-info">
-          <div class="col">
-            {{postTotal}}
-            <p>POSTS</p>
+          <div class="article-info">
+            <div class="col">
+              {{postTotal}}
+              <p>POSTS</p>
+            </div>
+            <div class="col">
+              {{tags.length}}
+              <p>TAGS</p>
+            </div>
           </div>
-          <div class="col">
-            {{tags.length}}
-            <p>TAGS</p>
-          </div>
-        </div>
 
-        <div class="contact-info">
-          <a href="http://github.com/tangsj" target="_blank" class="github" title="github">
-            <i class="icon-github"></i>
-          </a>
-          <a href="http://weibo.com/u/2337863121" target="_blank" class="weibo" title="weibo">
-            <i class="icon-weibo"></i>
-          </a>
-          <a href="https://plus.google.com/103636345185627159316" target="_blank" class="google" title="google+">
-            <i class="icon-google-plus"></i>
-          </a>
+          <div class="contact-info">
+            <a href="http://github.com/tangsj" target="_blank" class="github" title="github">
+              <i class="icon-github"></i>
+            </a>
+            <a href="http://weibo.com/u/2337863121" target="_blank" class="weibo" title="weibo">
+              <i class="icon-weibo"></i>
+            </a>
+            <a href="https://plus.google.com/103636345185627159316" target="_blank" class="google" title="google+">
+              <i class="icon-google-plus"></i>
+            </a>
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </Affix>
     <section class="post-list ">
       <router-view></router-view>
     </section>

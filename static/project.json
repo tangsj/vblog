@@ -53,11 +53,25 @@
       "year": "2016",
       "time": "16/05",
       "title": "个人博客",
-      "desc": "早期使用react技术栈建设，目前已改用vue技术栈",
+      "desc": "早期使用react技术栈建设，目前已改用vue技术栈，接口服务使用expressjs + mysql",
       "link": "http://www.tangsj.com",
       "tags": [
         "react",
-        "vue"
+        "vue",
+        "nodejs",
+        "mysql"
+      ]
+    },
+    {
+      "year": "2017",
+      "time": "07/10",
+      "title": "伊丽 - 味可滋",
+      "desc": "产品推广h5小游戏",
+      "link": "http://minisite.hocodo.com/test/codecook/game/index.html",
+      "tags": [
+        "createjs",
+        "rem",
+        "h5"
       ]
     },
     {
@@ -72,6 +86,17 @@
         "webpack",
         "gulp",
         "websocket"
+      ]
+    },
+    {
+      "year": "2017",
+      "time": "11/03",
+      "title": "葫芦娃大战丁磊",
+      "desc": "游戏上线同步推广h5，视频互动类型",
+      "link": "https://qnm.163.com/m/2017/dzdl/",
+      "tags": [
+        "video",
+        "animation"
       ]
     }
   ]

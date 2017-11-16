@@ -236,6 +236,9 @@
            margin-right: 10px;
           }
         }
+        .link{
+          word-break: break-all;
+        }
       }
     }
   }
