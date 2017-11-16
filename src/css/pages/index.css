@@ -107,5 +107,11 @@
   .page-article-list .posts .header{
     padding-left: 100px;
   }
+  .page-article-list .posts .header .date{
+    width: 80px;
+  }
+  .page-article-list .posts .header:hover:before{
+    width: 80px;
+  }
 }
 

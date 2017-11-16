@@ -16,10 +16,10 @@
         <Icon type="images"></Icon>
         Banner图管理
       </MenuItem>
-      <MenuItem name="/admin/user/list">
+      <!-- <MenuItem name="/admin/user/list">
         <Icon type="ios-people"></Icon>
         用户管理
-      </MenuItem>
+      </MenuItem> -->
     </Menu>
     <router-view></router-view>
   </div>
