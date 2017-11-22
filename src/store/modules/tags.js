@@ -10,19 +10,25 @@ const Tags = {
   },
   mutations: {
     setTagsData(state, data) {
-      state.list = data;
+      state.list = data.list;
     },
   },
   actions: {
-    async loadTagsList({ commit, rootState, state }, query) {
-      if (state.list.length > 0) {
-        return;
-      }
+    loadTagsList({ commit, rootState, state }, query) {
+      return new Promise(async (resolve, reject) => {
+        if (state.list.length > 0) {
+          resolve(state.list);
+          return;
+        }
 
-      const res = await tagsApi.list(query);
-      if (res) {
-        commit('setTagsData', res.data);
-      }
+        const res = await tagsApi.list(query);
+        if (res) {
+          commit('setTagsData', res.data);
+          resolve(res.data.list);
+        }
+
+        reject();
+      });
     },
   },
 };

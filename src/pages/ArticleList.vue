@@ -88,7 +88,7 @@ export default {
       });
     },
   },
-  beforeMount() {
+  mounted() {
     this.loadFun();
   },
 };

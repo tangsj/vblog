@@ -83,7 +83,7 @@ export default {
     },
   },
   beforeMount() {
-    this.loadTagsList({ page: -1 });
+    // this.loadTagsList({ page: -1 });
   },
   mounted() {
   },
