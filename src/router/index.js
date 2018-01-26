@@ -12,6 +12,7 @@ import PostList from '@/pages/admin/PostList';
 import TagList from '@/pages/admin/TagList';
 import BannerList from '@/pages/admin/BannerList';
 import UserList from '@/pages/admin/UserList';
+import Cloud from '@/pages/admin/Cloud';
 
 Vue.use(Router);
 
@@ -55,6 +56,10 @@ const router = new Router({
         {
           path: 'post/list',
           component: PostList,
+        },
+        {
+          path: 'cloud',
+          component: Cloud,
         },
         {
           path: 'tag/list',

@@ -45,9 +45,10 @@ export default {
   computed: {
     ...mapState([
       'isLogin',
+      'user',
     ]),
     murl() {
-      return this.isLogin ? '/admin/post/list' : '/admin/login';
+      return this.isLogin ? this.user.admin : '/admin/login';
     },
   },
   methods: {

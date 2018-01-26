@@ -11,10 +11,14 @@ const store = new Vuex.Store({
   state: {
     appName: 'CodeCook',
     isLogin: !!sessionStorage.isLogin,
+    user: JSON.parse(sessionStorage.user || '{}'),
   },
   mutations: {
     setLogin(state, status) {
       state.isLogin = status;
+    },
+    setUser(state, user) {
+      state.user = user;
     },
   },
   actions: {

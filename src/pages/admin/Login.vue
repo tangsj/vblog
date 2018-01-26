@@ -62,11 +62,13 @@ export default {
   computed: {
     ...mapState([
       'isLogin',
+      'user',
     ]),
   },
   methods: {
     ...mapMutations([
       'setLogin',
+      'setUser',
     ]),
     handleSubmit(name) {
       this.$refs.formData.validate(async (valid) => {
@@ -78,14 +80,16 @@ export default {
 
           if (res) {
             this.setLogin(true);
+            this.setUser(res.data);
             sessionStorage.setItem('isLogin', true);
+            sessionStorage.setItem('user', JSON.stringify(res.data));
             // 记住用户名，密码
             if (this.remember) {
               localStorage.setItem('cc_remember', JSON.stringify(this.formData));
             } else {
               localStorage.removeItem('cc_remember');
             }
-            this.$router.push(this.$route.query.redirect || '/admin/post/list');
+            this.$router.push(this.$route.query.redirect || this.user.admin);
           }
         }
       });
@@ -95,7 +99,7 @@ export default {
   },
   mounted() {
     if (this.isLogin) {
-      this.$router.push('/admin/post/list');
+      this.$router.push(this.user.admin);
       return;
     }
     // 回填信息
