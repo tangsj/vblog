@@ -133,7 +133,7 @@
         const res = await filesApi.list({
           page: this.current - 1,
           pageSize: this.pageSize,
-          type: 'all',
+          type: 'banner',
         });
 
         if (res) {

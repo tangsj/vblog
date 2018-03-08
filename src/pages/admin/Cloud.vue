@@ -7,7 +7,7 @@
     </div>
 
     <div class="tip" style="font-size: 12px;margin-bottom: 10px;">
-      图片大小不能超过2M
+      图片大小不能超过2M，手机访问地址：http://api.tangsj.com/cloud.html
     </div>
 
     <Table @on-selection-change="selectionChange" :loading="dataLoading" border :columns="columns" :data="data"></Table>
