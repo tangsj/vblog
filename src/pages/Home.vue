@@ -55,6 +55,10 @@
           </Tag>
         </div>
       </div>
+
+      <div class="ad">
+        <img src="/static/ad.jpg" alt="守财鹿 邀请码">
+      </div>
     </aside>
   </div>
 </template>

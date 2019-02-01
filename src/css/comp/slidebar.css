@@ -5,6 +5,10 @@
   .widget-wrap:first-child{ margin-top: 0; }
   .widget-title { text-decoration: none; text-transform: uppercase; color: #999;  }
   .widget { word-wrap: break-word; font-size: 14px; padding: 15px 0; }
+
+  .ad img{
+    width: 100%;
+  }
 }
 
 
