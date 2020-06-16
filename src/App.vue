@@ -7,7 +7,6 @@
           <router-link to="/" exact>记录</router-link>
           <!-- <router-link to="/demo" exact>示例</router-link> -->
           <router-link to="/about" exact>经历</router-link>
-          <a href="http://weixin.tangsj.com/dataoke/" target="_blank">惠多多</a>
         </nav>
         <nav class="nav-admin">
           <router-link :to="murl">管理</router-link>

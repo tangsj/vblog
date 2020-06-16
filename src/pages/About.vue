@@ -92,8 +92,8 @@ export default {
         },
         {
           time: '2017/8 - 至今',
-          class: 'tc',
-          company: '回家拉',
+          class: '',
+          company: '重庆沃伟思科技有限公司',
         },
       ],
       project: [],

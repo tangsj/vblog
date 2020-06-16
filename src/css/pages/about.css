@@ -129,16 +129,16 @@
 
     .items{
       padding: 80px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       .item{
         height: 100px;
         position: relative;
         .container{
           background-color: #FFF;
           width: 500px;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
+          position: relative;
           border-radius: 10px;
           box-shadow: 2px 2px 3px 1px #e8e8e8;
           padding: 10px 0;
@@ -164,7 +164,7 @@
 
         &:nth-child(odd){
           .container{
-            margin-left: -300px;
+            transform: translateX(-300px);
             padding-right: 120px;
             &:after{
               border-left-color: #FFF;
@@ -186,7 +186,7 @@
 
         &:nth-child(even){
           .container{
-            margin-left: 300px;
+            transform: translateX(300px);
             padding-left: 120px;
             &:after{
               border-right-color: #FFF;
@@ -231,7 +231,10 @@
           overflow: hidden;
           padding: 0 20px;
           line-height: 28px;
-
+          .points {
+            display: flex;
+            flex-wrap: wrap;
+          }
           .points span{
            margin-right: 10px;
           }
@@ -247,11 +250,13 @@
 
 @media screen and (max-width: 1320px) {
   .page-about{
-    padding: 0;
+    padding: 0 ;
+    padding-right: 10px;
   }
   .page-about .project .items .item{
     margin-bottom: 20px;
     height: auto;
+    width: 100%;
   }
 
   .page-about .project .items .item .container{
@@ -260,11 +265,11 @@
     transform: translate(0,0);
   }
   .page-about .project .items .item:nth-child(odd) .container{
+    transform: translateX(0);
     padding-right: 0;
-    margin-left: 0;
   }
   .page-about .project .items .item:nth-child(even) .container{
-    margin-left: 0;
+    transform: translateX(0);
     padding-left: 0;
   }
   .page-about .project .items .item:nth-child(even) .container:before,

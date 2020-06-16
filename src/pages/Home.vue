@@ -56,9 +56,9 @@
         </div>
       </div>
 
-      <div class="ad">
+      <!-- <div class="ad">
         <img src="/static/ad.jpg" alt="守财鹿 邀请码">
-      </div>
+      </div> -->
     </aside>
   </div>
 </template>

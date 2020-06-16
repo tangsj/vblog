@@ -54,7 +54,7 @@
       "time": "16/05",
       "title": "个人博客",
       "desc": "早期使用react技术栈建设，目前已改用vue技术栈，接口服务使用expressjs + mysql",
-      "link": "http://www.tangsj.com",
+      "link": "http://b.tangsj.com",
       "tags": [
         "react",
         "vue",
@@ -98,6 +98,53 @@
         "video",
         "animation"
       ]
+    },
+    {
+      "year": "2018",
+      "time": "08/03",
+      "title": "工匠总动员",
+      "desc": "包含管理平台，工匠微信端，小程序端等平台配套研发",
+      "link": "https://www.hjlapp.com/cgadmin",
+      "tags": [
+        "vue",
+        "jenkins",
+        "pixi",
+        "mpvue"
+      ]
+    },
+    {
+      "year": "2019",
+      "time": "07/05",
+      "title": "8.8日爸爸亲亲日",
+      "desc": "邀请投票类型H5，前后端整套开发",
+      "link": "http://weixin.tangsj.com/apps/renault/redirect.html",
+      "tags": [
+        "nodejs",
+        "video"
+      ]
+    },
+    {
+      "year": "2019",
+      "time": "11/15",
+      "title": "你的灵魂占比请查收",
+      "desc": "网易测试类型H5",
+      "link": "http://xyq.163.com/h5/dunhuang/",
+      "tags": [
+        "pixi",
+        "video"
+      ]
+    },
+    {
+      "year": "2020",
+      "time": "01/20",
+      "title": "决战亲戚",
+      "desc": "丰富动画类型",
+      "link": "http://weixin.tangsj.com/apps/jzqq/?skipAuth",
+      "tags": [
+        "pixi"
+      ]
     }
   ]
 }
+
+
