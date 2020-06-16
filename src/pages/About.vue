@@ -42,6 +42,7 @@
       <h2>
         <i class="icon-bookmark"></i>干过的事儿
       </h2>
+
       <div class="items">
         <div class="item" v-for="(pro, j) in project" :key="`pro_${j}`">
           <div class="container">
@@ -49,7 +50,7 @@
               <p>{{pro.time}}</p>
               <p class="year">{{pro.year}}</p>
             </div>
-            <div class="content">
+            <div :class="{ content: true, h5: pro.h5 }">
               <div class="title">{{pro.title}}</div>
               <div class="link">
                 <a target="_blank" :href="pro.link">{{pro.link}}</a>
@@ -59,6 +60,10 @@
                 <span v-for="(tag, t) in pro.tags" :key="`tag_${t}`">{{tag}}</span>
               </div>
             </div>
+
+             <a target="_blank" :href="pro.link" class="qrcode-wrap" v-if="pro.h5">
+                <qrcode class="qrcode" :value="pro.link" :options="{ width: 200, margin: 1 }"></qrcode>
+              </a>
           </div>
         </div>
       </div>

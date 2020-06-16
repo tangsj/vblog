@@ -4,12 +4,15 @@ import qs from 'qs';
 import iView from 'iview';
 import VueBus from 'vue-bus';
 import 'iview/dist/styles/iview.css';
+import VueQrcode from '@chenfengyuan/vue-qrcode';
+
 import App from './App';
 import router from './router';
 import store from './store';
 
 Vue.use(iView);
 Vue.use(VueBus);
+Vue.component(VueQrcode.name, VueQrcode);
 
 Vue.config.productionTip = false;
 

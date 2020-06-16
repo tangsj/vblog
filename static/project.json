@@ -53,6 +53,7 @@
       "year": "2016",
       "time": "16/05",
       "title": "个人博客",
+      "h5": true,
       "desc": "早期使用react技术栈建设，目前已改用vue技术栈，接口服务使用expressjs + mysql",
       "link": "http://b.tangsj.com",
       "tags": [
@@ -67,6 +68,7 @@
       "time": "07/10",
       "title": "伊丽 - 味可滋",
       "desc": "产品推广h5小游戏",
+      "h5": true,
       "link": "http://minisite.hocodo.com/test/codecook/game/index.html",
       "tags": [
         "createjs",
@@ -93,6 +95,7 @@
       "time": "11/03",
       "title": "葫芦娃大战丁磊",
       "desc": "游戏上线同步推广h5，视频互动类型",
+      "h5": true,
       "link": "https://qnm.163.com/m/2017/dzdl/",
       "tags": [
         "video",
@@ -117,6 +120,7 @@
       "time": "07/05",
       "title": "8.8日爸爸亲亲日",
       "desc": "邀请投票类型H5，前后端整套开发",
+      "h5": true,
       "link": "http://weixin.tangsj.com/apps/renault/redirect.html",
       "tags": [
         "nodejs",
@@ -128,6 +132,7 @@
       "time": "11/15",
       "title": "你的灵魂占比请查收",
       "desc": "网易测试类型H5",
+      "h5": true,
       "link": "http://xyq.163.com/h5/dunhuang/",
       "tags": [
         "pixi",
@@ -139,6 +144,7 @@
       "time": "01/20",
       "title": "决战亲戚",
       "desc": "丰富动画类型",
+      "h5": true,
       "link": "http://weixin.tangsj.com/apps/jzqq/?skipAuth",
       "tags": [
         "pixi"
